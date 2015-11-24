@@ -1,0 +1,376 @@
+
+.calendarBox{
+  width: 966px;
+  height: 447px;
+  margin: 20px auto;
+  background: #fff;
+  position: relative;
+  -webkit-box-shadow:0 0 10px #ccc;
+  -moz-box-shadow:0 0 10px #ccc;
+  box-shadow:0 0 10px #ccc;
+  overflow: hidden;
+  font-family: Microsoft YaHei;
+  .calHoverBox{
+    position: absolute;
+    display: block;
+    left: 70px;
+    top: 118px;
+    z-index: 100;
+    border: 1px solid #dddddd;
+    -webkit-box-shadow:0 0 10px #c6c6c6;
+    -moz-box-shadow:0 0 10px #c6c6c6;
+    box-shadow:0 0 10px #c6c6c6;
+    .tipTopIn{
+      position: absolute;
+      z-index: 101;
+      border-top: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #ffffff;
+      border-left: 10px solid transparent;
+    }
+    .tipTopOut{
+      position: absolute;
+      z-index: 101;
+      border-top: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #dddddd;
+      border-left: 10px solid transparent;
+    }
+    .tipBottomIn{
+      position: absolute;
+      z-index: 101;
+      border-top: 10px solid #fff;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+    }
+    .tipBottomOut{
+      position: absolute;
+      z-index: 101;
+      border-top: 10px solid #dddddd;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+    }
+    .tipLeftIn{
+      position: absolute;
+      z-index: 101;
+      border-top: 10px solid transparent;
+      border-right: 10px solid #fff;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+    }
+    .tipLeftOut{
+      position: absolute;
+      z-index: 101;
+      border-top: 10px solid transparent;
+      border-right: 10px solid #dddddd;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+    }
+    .tipRightIn{
+      position: absolute;
+      z-index: 101;
+      border-top: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #fff;
+    }
+    .tipRightOut{
+      position: absolute;
+      z-index: 101;
+      border-top: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #dddddd;
+    }
+    ul{
+      list-style: none;
+      background-color: #ffffff;
+      padding: 0px;
+      margin: 0px;
+
+      li{
+        border-bottom: 1px solid #ddd;
+        padding: 10px 12px;
+        position: relative;
+        width: 355px;
+        a{
+          display: block;
+          position: relative;
+          text-decoration: none;
+          outline: 0;
+          color: #666666;
+          &:hover{
+            text-decoration: none;
+            outline: 0;
+            color: #666666;
+          }
+          &:active{
+            text-decoration: none;
+            outline: 0;
+            color: #666666;
+          }
+          .calLeftCont{
+            width: 246px;
+            float: left;
+            span{
+              display: block;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              &:last-child{
+                font-size: 12px;
+                text-indent: 7px;
+                margin-top: 2px;
+                color: #999999;
+              }
+              &:first-child{
+                font-size: 16px;
+              }
+            }
+          }
+          .calRightCont{
+            float: right;
+            color: #ff5c00;
+            em{
+              font-style: normal;
+              font-size: 26px;
+              margin-right: 3px;
+              margin-left: -3px;
+            }
+            i{
+              font-style: normal;
+              color: #999999;
+            }
+          }
+          &:after{
+            display:block;
+            content:"clear";
+            height:0;
+            clear:both;
+            overflow:hidden;
+            visibility:hidden;
+          }
+        }
+      }
+    }
+
+  }/*.calHoverBox*/
+  .calPanel{
+    width: 950px;
+    height: 431px;
+    margin: 8px;
+    background-color: #ddd;
+    .calTitle{
+      height: 45px;
+      width: 950px;
+      span{
+        display: inline-block;
+        width: 127px;
+        height: 45px;
+        line-height: 45px;
+        background-color: #38414c;
+        color: #ffffff;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 14.6px;
+        &.calFirst{
+          width: 61px;
+          height: 45px;
+        }/*&.calFirst*/
+      }/*span*/
+    }/*.calTitle*/
+    .calContent{
+      width: 948px;
+      height: 383px;
+      margin: 2px auto 0px;
+      background-color: #fff;
+      .active{
+        background-color: #5bb8e3!important;
+        color: #ffffff!important;
+      }/*.active选中月份状态*/
+      .calTurn{
+/*        position: absolute;
+        width: 59px;
+        height: 383px;*/
+        .preMonth{
+          background: url(images/calIcons.png) no-repeat;
+          background-position: 0px 2px;
+          width: 32px;
+          height: 15px;
+          position: absolute;
+          top: 73px!important;
+          left: 22px;
+          cursor: pointer;
+
+          overflow: hidden;
+          outline: 0;
+        }
+        .nextMonth{
+          background: url(images/calIcons.png) no-repeat;
+          background-position: 0px -88px;
+          left: 22px;
+
+
+
+          width: 32px;
+          height: 15px;
+          position: absolute;
+          bottom: 28px!important;
+          cursor: pointer;
+
+          overflow: hidden;
+          outline: 0;
+        }
+      }
+      .calMonths{
+        display: block;
+        float: left;
+        background-color: #ddd;
+        font-size: 14.6px;
+        .month{
+          width: 59px;
+          height: 191px;
+          line-height: 191px;
+          text-align: center;
+          background-color: #ffffff;
+          color: #999;
+          &:last-child{
+            margin-top: 1px;
+          }
+        }/*.month*/
+
+      }/*.calMonths*/
+      .oneMonth{
+        display: none;
+        float: left;
+        width: 59px;
+        height: 383px;
+        line-height: 383px;
+        text-align: center;
+        background-color: #ffffff;
+        color: #999;
+        font-size: 14.6px;
+      }
+      .calDays{
+        position: relative;
+        float: right;
+        width: 890px;
+        margin-top: -1px;
+        margin-right: -1px;
+        table{
+          margin: 0;
+          padding: 0;
+          border-spacing: 0;
+          border-collapse: collapse;
+          width: 100%;
+          height: 385px;
+          tr{
+            .weekend{
+              background-color: #f1f9ff;
+            }
+            .today{
+              background-color: #5bb8e3;
+              color: #ffffff!important;
+            }
+            td{
+              width: 127px;
+              height: 61px;
+              font-family: Microsoft YaHei;
+              border: 1px solid #dddddd;
+              cursor: pointer;
+              .date{
+                color: #999;
+                font-size: 16px;
+                height: 21px;
+                display: block;
+                text-align: left;
+                overflow: hidden;
+                padding: 0 6px;
+                .data{
+                  color: #999;
+                  font-size: 16px;
+                  display: inline-block;
+                }
+                .thisDay{
+                  display: none;
+/*                  color: #ffffff;
+                  font-size: 12px;
+                  background-color: #2f80a6;
+                  width: 31px;
+                  height: 16px;
+                  text-align: center;
+                  margin-top: -2px;
+                  -webkit-border-radius: 2px;
+                  -moz-border-radius: 5px;
+                  border-radius: 2px;*/
+                }
+              }
+              .price{
+                text-align: right;
+                display: block;
+                font-size: 12px;
+                height: 21px;
+                overflow: hidden;
+                color: #ff5c00;
+                padding: 0 6px;
+                em{
+                  font-style: normal;
+                  font-size: 16px;
+                  margin-right: 3px;
+                  margin-left: -3px;
+                }
+                i{
+                  font-style: normal;
+                  color: #999999;
+                }
+              }
+              .srcDest{
+                text-align: right;
+                display: block;
+                color: #333;
+                font-size: 12px;
+                height: 18px;
+                overflow: hidden;
+                padding: 0 6px;
+              }
+/*              span{
+                padding: 0 6px;
+              }*/
+              &.today{
+                background-color: #5bb8e3;
+                .date{
+                  .data{
+                    color: #ffffff;
+                  }
+                  .thisDay{
+                    color: #ffffff;
+                    font-size: 12px;
+                    display: inline-block;
+                    background-color: #2f80a6;
+                    width: 31px;
+                    height: 16px;
+                    text-align: center;
+                    margin-top: -2px;
+                    -webkit-border-radius: 2px;
+                    -moz-border-radius: 5px;
+                    border-radius: 2px;
+                  }
+                }
+                .price{
+                  color: #ffffff;
+                  i{
+                    font-style: normal;
+                    color: #ffffff;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }/*.calDays*/
+    }/*.calContent*/
+
+  }/*.calPanel*/
+}/*.calendarBox*/
