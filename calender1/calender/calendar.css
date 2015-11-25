@@ -1,9 +1,13 @@
 .calendarBox {
   width: 966px;
   height: 447px;
-  margin: 20px auto;
   background: #fff;
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -220px;
+  margin-left: -483px;
+  z-index: 99999;
   -webkit-box-shadow: 0 0 10px #ccc;
   -moz-box-shadow: 0 0 10px #ccc;
   box-shadow: 0 0 10px #ccc;
@@ -12,11 +16,11 @@
   /*.calHoverBox*/
   /*.calPanel*/
 }
+.calendarBox .none {
+  display: none;
+}
 .calendarBox .calHoverBox {
   position: absolute;
-  display: block;
-  left: 70px;
-  top: 118px;
   z-index: 100;
   border: 1px solid #dddddd;
   -webkit-box-shadow: 0 0 10px #c6c6c6;
@@ -191,7 +195,7 @@
   height: 383px;
   margin: 2px auto 0px;
   background-color: #fff;
-  /*.activeѡ���·�״̬*/
+  /*.activeÑ¡ÖÐÔÂ·Ý×´Ì¬*/
   /*.calMonths*/
   /*.calDays*/
 }
@@ -206,13 +210,13 @@
 }
 .calendarBox .calPanel .calContent .calTurn .preMonth {
   background: url(images/calIcons.png) no-repeat;
-  background-position: 0px 2px;
+  background-position: 0px -34px;
   width: 32px;
   height: 15px;
   position: absolute;
   top: 73px!important;
   left: 22px;
-  cursor: pointer;
+  cursor: default;
   overflow: hidden;
   outline: 0;
 }
@@ -229,7 +233,6 @@
   outline: 0;
 }
 .calendarBox .calPanel .calContent .calMonths {
-  display: block;
   float: left;
   background-color: #ddd;
   font-size: 14.6px;
@@ -247,7 +250,6 @@
   margin-top: 1px;
 }
 .calendarBox .calPanel .calContent .oneMonth {
-  display: none;
   float: left;
   width: 59px;
   height: 383px;
@@ -279,18 +281,15 @@
   background-color: #5bb8e3;
   color: #ffffff!important;
 }
-.calendarBox .calPanel .calContent .calDays table tr td {
+.calendarBox .calPanel .calContent .calDays table tr .noData {
   width: 127px;
   height: 61px;
   font-family: Microsoft YaHei;
   border: 1px solid #dddddd;
-  cursor: pointer;
-  /*              span{
-                padding: 0 6px;
-              }*/
+  cursor: default;
 }
-.calendarBox .calPanel .calContent .calDays table tr td .date {
-  color: #999;
+.calendarBox .calPanel .calContent .calDays table tr .noData .date {
+  color: #ddd;
   font-size: 16px;
   height: 21px;
   display: block;
@@ -298,59 +297,29 @@
   overflow: hidden;
   padding: 0 6px;
 }
-.calendarBox .calPanel .calContent .calDays table tr td .date .data {
+.calendarBox .calPanel .calContent .calDays table tr .noData .date .data {
   color: #999;
   font-size: 16px;
   display: inline-block;
 }
-.calendarBox .calPanel .calContent .calDays table tr td .date .thisDay {
+.calendarBox .calPanel .calContent .calDays table tr .noData .date .thisDay {
   display: none;
-  /*                  color: #ffffff;
-                  font-size: 12px;
-                  background-color: #2f80a6;
-                  width: 31px;
-                  height: 16px;
-                  text-align: center;
-                  margin-top: -2px;
-                  -webkit-border-radius: 2px;
-                  -moz-border-radius: 5px;
-                  border-radius: 2px;*/
 }
-.calendarBox .calPanel .calContent .calDays table tr td .price {
-  text-align: right;
+.calendarBox .calPanel .calContent .calDays table tr .noData .price {
   display: block;
-  font-size: 12px;
   height: 21px;
-  overflow: hidden;
-  color: #ff5c00;
-  padding: 0 6px;
 }
-.calendarBox .calPanel .calContent .calDays table tr td .price em {
-  font-style: normal;
-  font-size: 16px;
-  margin-right: 3px;
-  margin-left: -3px;
-}
-.calendarBox .calPanel .calContent .calDays table tr td .price i {
-  font-style: normal;
-  color: #999999;
-}
-.calendarBox .calPanel .calContent .calDays table tr td .srcDest {
-  text-align: right;
+.calendarBox .calPanel .calContent .calDays table tr .noData .srcDest {
   display: block;
-  color: #333;
-  font-size: 12px;
   height: 18px;
-  overflow: hidden;
-  padding: 0 6px;
 }
-.calendarBox .calPanel .calContent .calDays table tr td.today {
+.calendarBox .calPanel .calContent .calDays table tr .noData.today {
   background-color: #5bb8e3;
 }
-.calendarBox .calPanel .calContent .calDays table tr td.today .date .data {
+.calendarBox .calPanel .calContent .calDays table tr .noData.today .date .data {
   color: #ffffff;
 }
-.calendarBox .calPanel .calContent .calDays table tr td.today .date .thisDay {
+.calendarBox .calPanel .calContent .calDays table tr .noData.today .date .thisDay {
   color: #ffffff;
   font-size: 12px;
   display: inline-block;
@@ -363,10 +332,94 @@
   -moz-border-radius: 5px;
   border-radius: 2px;
 }
-.calendarBox .calPanel .calContent .calDays table tr td.today .price {
+.calendarBox .calPanel .calContent .calDays table tr .hasData {
+  width: 127px;
+  height: 61px;
+  font-family: Microsoft YaHei;
+  border: 1px solid #dddddd;
+  cursor: pointer;
+  /*              span{
+                padding: 0 6px;
+              }*/
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData .date {
+  color: #999;
+  font-size: 16px;
+  height: 21px;
+  display: block;
+  text-align: left;
+  overflow: hidden;
+  padding: 0 6px;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData .date .data {
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData .date .thisDay {
+  display: none;
+  /*                  color: #ffffff;
+                  font-size: 12px;
+                  background-color: #2f80a6;
+                  width: 31px;
+                  height: 16px;
+                  text-align: center;
+                  margin-top: -2px;
+                  -webkit-border-radius: 2px;
+                  -moz-border-radius: 5px;
+                  border-radius: 2px;*/
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData .price {
+  text-align: right;
+  display: block;
+  font-size: 12px;
+  height: 21px;
+  overflow: hidden;
+  color: #ff5c00;
+  padding: 0 6px;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData .price em {
+  font-style: normal;
+  font-size: 16px;
+  margin-right: 3px;
+  margin-left: -3px;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData .price i {
+  font-style: normal;
+  color: #999999;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData .srcDest {
+  text-align: right;
+  display: block;
+  color: #333;
+  font-size: 12px;
+  height: 18px;
+  overflow: hidden;
+  padding: 0 6px;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData.today {
+  background-color: #5bb8e3;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData.today .date .data {
   color: #ffffff;
 }
-.calendarBox .calPanel .calContent .calDays table tr td.today .price i {
+.calendarBox .calPanel .calContent .calDays table tr .hasData.today .date .thisDay {
+  color: #ffffff;
+  font-size: 12px;
+  display: inline-block;
+  background-color: #2f80a6;
+  width: 31px;
+  height: 16px;
+  text-align: center;
+  margin-top: -2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 5px;
+  border-radius: 2px;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData.today .price {
+  color: #ffffff;
+}
+.calendarBox .calPanel .calContent .calDays table tr .hasData.today .price i {
   font-style: normal;
   color: #ffffff;
 }
