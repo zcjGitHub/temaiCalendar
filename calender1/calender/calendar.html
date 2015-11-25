@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    <link href="calendar.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="calendarBox">
+    <div class="calHoverBox">
+        <i class="out"></i>
+        <i class="in"></i>
+        <ul>
+<!--            <li>
+            <a href="javascript:0" target="_blank">
+                <div class="calLeftCont">
+                    <span>【银滩漫步】北海双飞4日自由行</span>
+                    <span>上海-北海&nbsp;自由行</span>
+                </div>
+                        <span class="calRightCont">￥<em>1999</em><i>起</i>
+                        </span>
+            </a>
+        </li>
+            <li>
+                <a href="javascript:0" target="_blank">
+                    <div class="calLeftCont">
+                        <span>【银滩漫步】北海双飞4日自由行</span>
+                        <span>上海-北海&nbsp;自由行</span>
+                    </div>
+                        <span class="calRightCont">￥<em>1999</em><i>起</i>
+                        </span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:0" target="_blank">
+                    <div class="calLeftCont">
+                        <span>【银滩漫步】北海双飞4日自由行</span>
+                        <span>上海-北海&nbsp;自由行</span>
+                    </div>
+                        <span class="calRightCont">￥<em>1999</em><i>起</i>
+                        </span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:0" target="_blank">
+                    <div class="calLeftCont">
+                        <span>【银滩漫步】北海双飞4日自由行</span>
+                        <span>上海-北海&nbsp;自由行</span>
+                    </div>
+                        <span class="calRightCont">￥<em>1999</em><i>起</i>
+                        </span>
+                </a>
+            </li>-->
+        </ul>
+    </div>
+    <div class="calPanel">
+        <div class="calTitle">
+            <span class="calFirst"></span><span>MON一</span><span>TUE二</span><span>WED三</span><span>THU四</span><span>FRI五</span><span class="calSaturday">SAT六</span><span class="calSunday">SUN日</span>
+        </div>
+        <div class="calContent">
+            <div class="calTurn">
+                <a href="javascript:;" hidefocus="true" class="preMonth"></a>
+                <a href="javascript:;" hidefocus="true" class="nextMonth"></a>
+            </div>
+            <div class="calMonths">
+                <div class="month active">
+                    <span>6月</span>
+                </div>
+                <div class="month">
+                    <span>7月</span>
+                </div>
+            </div>
+            <div class="oneMonth active">
+                <span>6月</span>
+            </div>
+            <div class="calDays">
+                <table>
+                    <tbody id ="calendarHtml"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="http://js.40017.cn/cn/csl/guoneiyou/lib/jquery.min.js"></script>
+<script src="calendar.js"></script>
+<script src="template.js"></script>
+<script type="text/tmpl" id="CalendarTmpl">
+    {{each priceInfoList as value i}}
+        {{ if i % 7 ==0 }}
+            <tr>
+        {{/if}}
+            {{if (i+2) % 7 ==0 || (i+1) % 7 ==0}}
+            <td class="{{value.product.length==0?"noData":"hasData"}} {{value.logs == 0?"":"today"}} weekend" attr-data = "{{value.product.length}}" attr-date ="{{value.date}}">
+            {{else}}
+            <td class="{{value.product.length==0?"noData":"hasData"}} {{value.logs == 0?"":"today"}}" attr-data = "{{value.product.length}}" attr-date ="{{value.date}}">
+            {{/if}}
+                <span class="date">
+                    <span class="data">{{value.date.split("-")[2].substring(0,1) == "0"?value.date.split("-")[2].substring(1,2):value.date.split("-")[2].substring(0,2)}}</span>
+                    <span class="thisDay">今日</span>
+                </span>
+                {{if value.product.length==0}}
+                    <span class="price"><em></em><i></i></span>
+                    <span class="srcDest"></span>
+                {{else}}
+                    <span class="price">￥<em>{{value.product[0].AmountDirect}}</em><i>起</i></span>
+                    <span class="srcDest">{{value.product[0].RouteTitle}}</span>
+                {{/if}}
+            </td>
+        {{ if (i+1) % 7 ==0 }}
+            </tr>
+        {{/if}}
+    {{/each}}
+</script>
+</html>
